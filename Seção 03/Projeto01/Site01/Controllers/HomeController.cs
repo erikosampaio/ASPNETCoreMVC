@@ -6,7 +6,8 @@ namespace Site01.Controllers
     {
         public ActionResult Index()
         {
-            return new ContentResult() { Content = "Olá Vida!", ContentType = "text/json" };
+            // return new ContentResult() { Content = "Olá Vida!", ContentType = "text/json" };
+            return View();
         }
     }
 }
