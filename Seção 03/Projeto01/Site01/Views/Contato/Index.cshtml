@@ -12,22 +12,22 @@
 </head>
 <body>
     <div class="container mt-3">
-        <form>
+        <form method="post" action="/contato/recebercontato">
             <div class="form-group mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+                <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite seu nome">
             </div>
             <div class="form-group mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Digite seu email">
+                <input type="text" name="email" class="form-control" id="email" placeholder="Digite seu email">
             </div>
             <div class="form-group mb-3">
                 <label for="assunto" class="form-label">Assunto</label>
-                <input type="text" class="form-control" id="assunto" placeholder="Digite o assunto">
+                <input type="text" name="assunto" class="form-control" id="assunto" placeholder="Digite o assunto">
             </div>
             <div class="form-group mb-3">
                 <label for="mensagem" class="form-label">Mensagem</label>
-                <textarea type="text" class="form-control" id="mensagem"></textarea>
+                <textarea type="text" name="mensagem" class="form-control" id="mensagem"></textarea>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Enviar</button>
         </form>
