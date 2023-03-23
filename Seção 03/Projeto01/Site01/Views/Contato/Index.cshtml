@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -16,18 +15,22 @@
             <div class="form-group mb-3">
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" name="nome" class="form-control" id="nome" placeholder="Digite seu nome">
+                @Html.ValidationMessage("nome")
             </div>
             <div class="form-group mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" name="email" class="form-control" id="email" placeholder="Digite seu email">
+                @Html.ValidationMessage("email")
             </div>
             <div class="form-group mb-3">
                 <label for="assunto" class="form-label">Assunto</label>
                 <input type="text" name="assunto" class="form-control" id="assunto" placeholder="Digite o assunto">
+                @Html.ValidationMessage("assunto")
             </div>
             <div class="form-group mb-3">
                 <label for="mensagem" class="form-label">Mensagem</label>
                 <textarea type="text" name="mensagem" class="form-control" id="mensagem"></textarea>
+                @Html.ValidationMessage("mensagem")
             </div>
             <button type="submit" class="btn btn-primary mt-3">Enviar</button>
         </form>
