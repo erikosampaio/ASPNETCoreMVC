@@ -12,6 +12,7 @@ namespace Site01.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Contato = new Contato();
             return View();
         }
 
@@ -23,12 +24,15 @@ namespace Site01.Controllers
                 // string conteudo = string.Format("Nome: {0}, Email: {1}, Assunto: {2}, Mensagem: {3}", contato.Nome, contato.Email, contato.Assunto, contato.Mensagem);
                 //return new ContentResult() { Content = conteudo };
 
+                ViewBag.Contato = new Contato();
                 EnviarEmail.EnviarMensagemContato(contato);
                 ViewBag.Mensagem = "Mensagem enviada com sucesso!";
                 return View ("Index");
             }
             else
             {
+                ViewBag.Contato = contato;
+
                 return View("Index");
             }
 
