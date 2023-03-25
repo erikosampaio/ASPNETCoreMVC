@@ -5,26 +5,26 @@ namespace Site01.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public IActionResult Index()
         {
             // return new ContentResult() { Content = "Olá Vida!", ContentType = "text/json" };
             return View();
         }
 
         [HttpGet]
-        public ActionResult Login()
+        public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login([FromForm]Usuario usuario)
+        public IActionResult Login([FromForm]Usuario usuario)
         {
             if (ModelState.IsValid)
             {
                 if (usuario.Email == "erikoa.93@gmail.com" && usuario.Senha == "123456")
                 {
-                    return Redirect("/palavra");
+                    return RedirectToAction("Index", "Palavra");
                 }
                 else
                 {
