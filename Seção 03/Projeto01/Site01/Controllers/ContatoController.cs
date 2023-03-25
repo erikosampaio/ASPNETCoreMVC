@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Site01.Library.Mail;
 using Site01.Models;
 
 namespace Site01.Controllers
@@ -18,8 +19,13 @@ namespace Site01.Controllers
         {
             if (ModelState.IsValid)
             {
-                string conteudo = string.Format("Nome: {0}, Email: {1}, Assunto: {2}, Mensagem: {3}", contato.Nome, contato.Email, contato.Assunto, contato.Mensagem);
-                return new ContentResult() { Content = conteudo };
+                // Forma antiga
+                // string conteudo = string.Format("Nome: {0}, Email: {1}, Assunto: {2}, Mensagem: {3}", contato.Nome, contato.Email, contato.Assunto, contato.Mensagem);
+                //return new ContentResult() { Content = conteudo };
+
+                EnviarEmail.EnviarMensagemContato(contato);
+                ViewBag.Mensagem = "Mensagem enviada com sucesso!";
+                return View ("Index");
             }
             else
             {
