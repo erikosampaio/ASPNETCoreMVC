@@ -29,25 +29,41 @@ namespace Site01.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
-            return View();
+            return View(new Palavra());
         }
 
         [HttpPost]
         public IActionResult Cadastrar([FromForm]Palavra palavra)
         {
+            if (ModelState.IsValid)
+            {
+                _db.Palavras.Add(palavra);
+                _db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
         [HttpGet]
-        public IActionResult Atualizar()
+        public IActionResult Atualizar(int Id)
         {
-            return View("Cadastrar");
+            Palavra palavra = _db.Palavras.Find(Id);
+
+            return View("Cadastrar", palavra);
         }
 
         [HttpPost]
         public IActionResult Atualizar([FromForm]Palavra palavra)
         {
-            return View("Cadastrar");
+            if (ModelState.IsValid)
+            {
+                _db.Update(palavra);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View("Cadastrar", palavra);
         }
 
         // palavra/excluir/id
@@ -55,6 +71,9 @@ namespace Site01.Controllers
         [HttpGet]
         public IActionResult Excluir(int Id)
         {
+            _db.Palavras.Remove(_db.Palavras.Find(Id));
+            _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
