@@ -15,9 +15,14 @@ namespace Site01.Controllers
     {
         private DatabaseContext _db;
 
+        List<Nivel> niveis = new List<Nivel>();
         public PalavraController(DatabaseContext db)
         {
             _db = db;
+
+            niveis.Add(new Nivel() { Id = 1, Nome = "1 - Fácil" });
+            niveis.Add(new Nivel() { Id = 2, Nome = "2 - Médio" });
+            niveis.Add(new Nivel() { Id = 3, Nome = "3 - Difícil" });
         }
 
         // Listar todas as palavras
@@ -36,12 +41,16 @@ namespace Site01.Controllers
         [HttpGet]
         public IActionResult Cadastrar()
         {
+            ViewBag.Nivel = niveis;
+
             return View(new Palavra());
         }
 
         [HttpPost]
         public IActionResult Cadastrar([FromForm]Palavra palavra)
         {
+            ViewBag.Nivel = niveis;
+
             if (ModelState.IsValid)
             {
                 _db.Palavras.Add(palavra);
@@ -58,6 +67,8 @@ namespace Site01.Controllers
         [HttpGet]
         public IActionResult Atualizar(int Id)
         {
+            ViewBag.Nivel = niveis;
+
             Palavra palavra = _db.Palavras.Find(Id);
 
             return View("Cadastrar", palavra);
@@ -66,6 +77,8 @@ namespace Site01.Controllers
         [HttpPost]
         public IActionResult Atualizar([FromForm]Palavra palavra)
         {
+            ViewBag.Nivel = niveis;
+
             if (ModelState.IsValid)
             {
                 _db.Update(palavra);

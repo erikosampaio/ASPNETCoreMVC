@@ -17,7 +17,21 @@
     </div>
     <div class="form-group mb-3">
         <label for="nivel" class="form-label">Nível</label>
-        <input type="number" name="nivel" class="form-control" value="@Model.Nivel" id="nivel" placeholder="Digite o nível: 1 - Fácil, 2 - Médio, 3 - Difícil">
+        <select name="nivel" class="form-control">
+            @foreach (var nivel in ViewBag.Nivel)
+            {
+                @if (nivel.Id == Model.Nivel)
+                {
+                    <option value="@nivel.Id" selected>@nivel.Nome</option>
+                }
+                else
+                {
+                    <option value="@nivel.Id">@nivel.Nome</option>
+                }
+
+            }
+        </select>
+        <!--<input type="number" name="nivel" class="form-control" value="@Model.Nivel" id="nivel" placeholder="Digite o nível: 1 - Fácil, 2 - Médio, 3 - Difícil">-->
         @Html.ValidationMessage("nivel")
     </div>
     <button type="submit" class="btn btn-primary mt-3">Cadastrar</button>
