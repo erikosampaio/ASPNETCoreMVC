@@ -24,6 +24,9 @@ namespace Site01
                 options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Site01;Integrated Security=True;Connect Timeout=30;" +
                     "Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
             });
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +38,7 @@ namespace Site01
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
 
             /*
