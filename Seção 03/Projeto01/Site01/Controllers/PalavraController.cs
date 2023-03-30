@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Site01.Database;
 using Site01.Library.Filters;
 using Site01.Models;
+using X.PagedList;
 
 namespace Site01.Controllers
 {       
@@ -20,10 +21,14 @@ namespace Site01.Controllers
         }
 
         // Listar todas as palavras
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
+            var pageNumber = page ?? 1;
+
             var palavras = _db.Palavras.ToList();
-            return View(palavras);
+
+            var resultadoPaginado = _db.Palavras.ToPagedList(pageNumber, 5);
+            return View(resultadoPaginado);
         }
 
 
