@@ -42,6 +42,8 @@ namespace Site01.Controllers
                 _db.Palavras.Add(palavra);
                 _db.SaveChanges();
 
+                TempData["Mensagem"] = "Palavra '" + palavra.Nome + "' criada com sucesso!";
+
                 return RedirectToAction("Index");
             }
 
@@ -63,6 +65,9 @@ namespace Site01.Controllers
             {
                 _db.Update(palavra);
                 _db.SaveChanges();
+
+                TempData["Mensagem"] = "Palavra '" + palavra.Nome + "' atualizada com sucesso!";
+
                 return RedirectToAction("Index");
             }
             return View("Cadastrar", palavra);
@@ -73,8 +78,11 @@ namespace Site01.Controllers
         [HttpGet]
         public IActionResult Excluir(int Id)
         {
-            _db.Palavras.Remove(_db.Palavras.Find(Id));
+            Palavra palavra = _db.Palavras.Find(Id);
+            _db.Palavras.Remove(palavra);
             _db.SaveChanges();
+
+            TempData["Mensagem"] = "Palavra '" + palavra.Nome + "' excluída com sucesso!";
 
             return RedirectToAction("Index");
         }

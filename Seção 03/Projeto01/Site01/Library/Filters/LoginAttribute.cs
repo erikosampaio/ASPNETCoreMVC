@@ -15,6 +15,11 @@ namespace Site01.Library.Filters
             // Verifica se a sessão não existe
             if (context.HttpContext.Session.GetString("Login") == null)
             {
+                if(context.Controller != null)
+                {
+                    Controller controlador = context.Controller as Controller;
+                    controlador.TempData["MensagemErro"] = "Necessário Login para acessar a página desejada";
+                }
                 context.Result = new RedirectToActionResult("Login", "Home", null);
             }
 
