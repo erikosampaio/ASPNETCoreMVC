@@ -23,7 +23,7 @@ namespace Site01.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (usuario.Email == "erikoa.93@gmail.com" && usuario.Senha == "123456")
+                if (usuario.Email == "teste@teste.com" && usuario.Senha == "123456")
                 {
                     /*
                     * - Add Session
