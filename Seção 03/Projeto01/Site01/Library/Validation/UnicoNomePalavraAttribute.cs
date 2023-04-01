@@ -19,7 +19,7 @@ namespace Site01.Library.Validation
             // - Verificar se nome existe
             // - Verificar se Id é o mesmo do registro no banco
 
-            var PalavraBanco = _db.Palavras.Where(a => a.Nome == palavra.Nome && a.Id != palavra.Id).FirstOrDefault();
+            var PalavraBanco = _db.Palavras.Where(a => a.Nome.ToLower() == palavra.Nome.ToLower() && a.Id != palavra.Id).FirstOrDefault();
 
             if (PalavraBanco == null)
             {

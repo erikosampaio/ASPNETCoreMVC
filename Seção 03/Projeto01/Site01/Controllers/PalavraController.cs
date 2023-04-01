@@ -32,7 +32,7 @@ namespace Site01.Controllers
 
             var palavras = _db.Palavras.ToList();
 
-            var resultadoPaginado = _db.Palavras.ToPagedList(pageNumber, 5);
+            var resultadoPaginado = _db.Palavras.OrderBy(a => a.Id).ToPagedList(pageNumber, 5);
             return View(resultadoPaginado);
         }
 

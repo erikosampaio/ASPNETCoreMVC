@@ -14,7 +14,7 @@ namespace Site01.Library.Mail
 
         // Autenticação - Gmail
         public readonly static string Usuario = "erikoa.93@gmail.com";
-        public readonly static string Senha = "azygjxakfwfhjnqs";
+        public readonly static string Senha = "prdtujyupzrcktgk";
 
         // Servidor SMTP
         public readonly static string ServidorSMTP = "smtp.gmail.com";
