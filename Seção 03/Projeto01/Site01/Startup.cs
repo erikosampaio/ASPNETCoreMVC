@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Extensions.DependencyInjection;
+
 using Site01.Database;
 
 namespace Site01
@@ -21,8 +23,9 @@ namespace Site01
             services.AddDbContext<DatabaseContext>(options =>
             {
                 // Providers - Bibliotecas de conexão com banco de dados - SqlServer, Mysql, Postgresql, Oracle, Firebird...
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Site01;Integrated Security=True;Connect Timeout=30;" +
-                    "Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                //options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Site01;Integrated Security=True;Connect Timeout=30;" +
+                //"Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                options.UseSqlite("Data source=Database\\site01.db");
             });
 
             services.AddDistributedMemoryCache();
