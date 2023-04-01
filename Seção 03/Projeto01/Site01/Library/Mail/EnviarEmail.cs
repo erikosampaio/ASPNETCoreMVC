@@ -19,8 +19,8 @@ namespace Site01.Library.Mail
             // Mensagem de email
             MailMessage mensagem = new MailMessage();
             mensagem.From = new MailAddress(Constants.Usuario);
-            mensagem.To.Add(Constants.Usuario);
-            mensagem.Subject = "Teste de envio de email com .NET";
+            mensagem.To.Add(contato.Email);
+            mensagem.Subject = contato.Assunto;
 
             mensagem.IsBodyHtml = true;
             mensagem.Body = "<h1>Formulário de contato</h1> " + conteudo;
